@@ -18,44 +18,44 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @ManagedBean(name="bean")
 @RequestScoped
 public class Bean {
-	
-	private JasperPrint jasperPrint;
-	
-	@ManagedProperty(value= "#{listBean}")
-	private ListBean listBean;
-	
-	public void setListBean(ListBean listBean) {
+
+    private JasperPrint jasperPrint;
+
+    @ManagedProperty(value= "#{listBean}")
+    private ListBean listBean;
+
+    public void setListBean(ListBean listBean) {
         this.listBean = listBean;
     }
-	
-	/** report */
+
+    /** report */
     public void generateReport() throws JRException,IOException {
-		
+
         JRBeanCollectionDataSource collection = 
-				new JRBeanCollectionDataSource(listBean.getBooks());
+                new JRBeanCollectionDataSource(listBean.getBooks());
 
-		String report = 
-		        FacesContext.getCurrentInstance().getExternalContext()
-				.getRealPath("/resources/relatorios/Report.jasper");
+        String report = 
+                FacesContext.getCurrentInstance().getExternalContext()
+                .getRealPath("/resources/relatorios/Report.jasper");
 
-		jasperPrint = 
-		        JasperFillManager.fillReport(report,
-				new HashMap<String, Object>(), collection);
+        jasperPrint = 
+                JasperFillManager.fillReport(report,
+                        new HashMap<String, Object>(), collection);
 
-		/** Http */
-		HttpServletResponse httpServletResponse = 
-		        (HttpServletResponse) FacesContext
-				.getCurrentInstance().getExternalContext().getResponse();
+        /** Http */
+        HttpServletResponse httpServletResponse = 
+                (HttpServletResponse) FacesContext
+                .getCurrentInstance().getExternalContext().getResponse();
 
-		httpServletResponse.addHeader("Content-disposition",
-				"attachment; filename=Book-Report .pdf");
+        httpServletResponse.addHeader("Content-disposition",
+                "attachment; filename=Book-Report .pdf");
 
-		javax.servlet.ServletOutputStream servletStream = 
-		        httpServletResponse.getOutputStream();
+        javax.servlet.ServletOutputStream servletStream = 
+                httpServletResponse.getOutputStream();
 
-		JasperExportManager.exportReportToPdfStream(jasperPrint, servletStream);
-		FacesContext.getCurrentInstance().responseComplete();
-	}
+        JasperExportManager.exportReportToPdfStream(jasperPrint, servletStream);
+        FacesContext.getCurrentInstance().responseComplete();
+    }
 }
 
 
