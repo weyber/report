@@ -14,7 +14,11 @@
     <h:outputStylesheet library="css" name="primefaces.css" />
     
     <h:form>
-        <p:dataTable var="b" value="#{listBean.books}">
+        <p:dataTable var="b" value="#{bookService.books}">
+            <p:column>
+                <p:graphicImage library="imagens" name="#{b.image}"/>
+            </p:column>
+        
             <p:column headerText="Title">
                 <p:outputLabel value="#{b.title}" />
             </p:column>

@@ -2,35 +2,33 @@ package model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.NamedQueries;
-import org.hibernate.annotations.NamedQuery;
-
-@Entity
-@NamedQueries({
-    @NamedQuery(name = "findAll", 
-            query = "SELECT b FROM Book b")
-})
 public class Book implements Serializable  {
 
     private static final long serialVersionUID = 1L;
 
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String title;
+    
     private String author;
 
+    private String image;
+    
     private Double value;
 
-    private String title;
+    public Book(Long id, String title, String author, String image, Double value) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.image = image;
+        this.value = value;
+    }
 
-    private String image;
-
+    public Book() {
+       
+    }
+ 
     public Long getId() {
         return id;
     }

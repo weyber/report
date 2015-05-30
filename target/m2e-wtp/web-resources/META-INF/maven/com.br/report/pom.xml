@@ -11,13 +11,7 @@
     <properties>
         <jsf-version>2.2.11</jsf-version>
 
-        <mysql-version>5.1.35</mysql-version>
-
-        <hibernate-version>4.3.9.Final</hibernate-version>
-
         <primefaces-version>5.2</primefaces-version>
-
-        <spring-version>4.1.6.RELEASE</spring-version>
 
         <jasper-version>6.1.0</jasper-version>
         
@@ -40,21 +34,6 @@
             <version>${groovy-version}</version>
         </dependency>
         
-        <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
-        <!-- Hibernate -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate-version}</version>
-        </dependency>
-
-        <!-- Mysql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-version}</version>
-        </dependency>
-
         <!-- JSF 2.2 -->
         <dependency>
             <groupId>com.sun.faces</groupId>
@@ -73,25 +52,6 @@
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>${primefaces-version}</version>
-        </dependency>
-
-        <!-- spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring-version}</version>
         </dependency>
 
         <!-- Commons Database Connection Pooling -->
